@@ -22,7 +22,9 @@ gulp.task('watch', function(done) {
      *   done();
      */
 
-    gulp.watch(['./app/assets/styles/**/*.css', './app/index.html'], gulp.series('style', 'cssJect', 'reload'));
+    // Using gulp's watch module to watch multiple files when edited,I use series module to run the tasks sequently.
+    gulp.watch(['./app/assets/styles/**/*.css', './app/index.html', './app/assets/scripts/**/*.js'], 
+    gulp.series('style', 'cssJect', 'scripts', 'reload'));
     done();
 });
 
@@ -30,3 +32,4 @@ gulp.task('cssJect', function() {
     return gulp.src('./app/temp/styles/style.css')
       .pipe(browserSync.stream());
 });
+
